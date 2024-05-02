@@ -25,5 +25,20 @@ func main() {
 }
 
 func defangIPaddr(address string) string {
+	runesArray := []rune(address)
+	var newAddr []rune
+	lastIndex := 0
+	for i, ch := range runesArray {
+		if ch == '.' {
+			newAddr = append(newAddr, runesArray[lastIndex:i]...)
+			newAddr = append(newAddr, '[', '.', ']')
+			lastIndex = i + 1
+		}
+	}
+	newAddr = append(newAddr, runesArray[lastIndex:]...)
+	return string(newAddr)
+}
+
+func defangIPaddrBuiltIn(address string) string {
 	return strings.Replace(address, ".", "[.]", -1)
 }
