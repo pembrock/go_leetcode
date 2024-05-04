@@ -24,21 +24,7 @@ X++: X is incremented by 1, X =  0 + 1 =  1.
 
 func main() {
 	operations := []string{"--X", "X++", "X++"}
-	x := 0
-	for _, op := range operations {
-		switch op {
-		case "--X":
-			x -= 1
-		case "X--":
-			x -= 1
-		case "++X":
-			x += 1
-		case "X++":
-			x += 1
-		}
-	}
-
-	fmt.Println(x)
+	fmt.Println(finalValueAfterOperations(operations))
 }
 
 func finalValueAfterOperations(operations []string) int {
